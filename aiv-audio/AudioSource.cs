@@ -13,6 +13,9 @@ namespace Aiv.Audio
 
         public AudioSource()
         {
+			if (AudioDevice.CurrentDevice == null) {
+				AudioDevice.UseDefault();
+			}
             sourceId = AL.GenSource();
         }
 

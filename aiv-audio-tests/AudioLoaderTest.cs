@@ -8,13 +8,14 @@ using System.IO;
 
 namespace Aiv.Audio.Tests
 {
-    [TestFixture]
-    public class AudioLoaderTest
-    {
-        [OneTimeSetUp]
-        public void ChangeWorkingDirectory()
-        {
-            Directory.SetCurrentDirectory(typeof(AudioLoaderTest).Assembly.Location);
+	[TestFixture]
+	public class AudioLoaderTest
+	{
+		[OneTimeSetUp]
+		public void ChangeWorkingDirectory()
+		{
+			string currentFile = typeof(AudioLoaderTest).Assembly.Location;
+			Directory.SetCurrentDirectory(Directory.GetParent(currentFile).FullName);
         }
 
         [Test]

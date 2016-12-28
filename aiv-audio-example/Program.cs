@@ -15,7 +15,8 @@ namespace Aiv.Audio.Example
                 Console.WriteLine(device);
             }
 
-            AudioDevice audioCard = new AudioDevice();
+           
+			Console.WriteLine(AudioDevice.CurrentDevice.Name);
 
             AudioClip clip = new AudioClip("Assets/jumping.ogg");
 
@@ -28,7 +29,11 @@ namespace Aiv.Audio.Example
 
             source.Play(clip);
 
-            Console.ReadLine();
+			while (true)
+			{
+				Console.ReadLine();
+				source.Play(clip);
+			}
         }
     }
 }

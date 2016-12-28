@@ -7,7 +7,7 @@
     <ProjectGuid>{A06EDFBC-3459-453C-A416-2672872D053D}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>aiv_audio_example</RootNamespace>
+    <RootNamespace>Aiv.Audio.Example</RootNamespace>
     <AssemblyName>aiv-audio-example</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

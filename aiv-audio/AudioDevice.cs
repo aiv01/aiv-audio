@@ -7,42 +7,69 @@ using OpenTK.Audio.OpenAL;
 
 namespace Aiv.Audio
 {
-    public class AudioDevice
-    {
+	public class AudioDevice
+	{
 
-        private IntPtr deviceId;
-        private OpenTK.ContextHandle contextHandle;
-        private int listenerId;
+		private IntPtr deviceId;
+		private OpenTK.ContextHandle contextHandle;
 
-        public static string[] Devices
-        {
-            get
-            {
-                return Alc.GetString(IntPtr.Zero, AlcGetStringList.AllDevicesSpecifier).ToArray<string>();
-            }
-        }
+		public static string[] Devices
+		{
+			get
+			{
+				return Alc.GetString(IntPtr.Zero, AlcGetStringList.AllDevicesSpecifier).ToArray<string>();
+			}
+		}
 
-        public AudioDevice(string device = null)
-        {
-            if (device == null)
-            {
-                device = Devices[0];
-            }
-            deviceId = Alc.OpenDevice(device);
-            contextHandle = Alc.CreateContext(deviceId, new int[] { });
-            this.Use();
-        }
+		private static AudioDevice currentDevice;
+		public static AudioDevice CurrentDevice
+		{
+			get
+			{
+				if (currentDevice == null) {
+					UseDefault();
+				}
+				return currentDevice;
+			}
+		}
 
-        public void Use()
-        {
-            Alc.MakeContextCurrent(contextHandle);
-        }
+		public static void UseDefault()
+		{
+			currentDevice = new AudioDevice();
+		}
 
-        ~AudioDevice()
-        {
-            Alc.DestroyContext(contextHandle);
-            Alc.CloseDevice(deviceId);
-        }
+		public string Name
+		{
+			get
+			{
+				return Alc.GetString(this.deviceId, AlcGetString.DeviceSpecifier);
+			}
+		}
 
-    }
+		public AudioDevice(string device = null)
+		{
+			if (device == null)
+			{
+				device = Alc.GetString(IntPtr.Zero, AlcGetString.DefaultDeviceSpecifier);
+			}
+
+			deviceId = Alc.OpenDevice(device);
+			contextHandle = Alc.CreateContext(deviceId, new int[] { });
+
+			this.Use();
+		}
+
+		public void Use()
+		{
+			Alc.MakeContextCurrent(contextHandle);
+			currentDevice = this;
+		}
+
+		~AudioDevice()
+		{
+			Alc.DestroyContext(contextHandle);
+			Alc.CloseDevice(deviceId);
+		}
+
+	}
 }

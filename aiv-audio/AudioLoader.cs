@@ -52,12 +52,9 @@ namespace Aiv.Audio
 
         public virtual void Open(string fileName)
         {
-            Assembly assembly = Assembly.GetEntryAssembly();
-            foreach(string item in assembly.GetManifestResourceNames())
-            {
-                Console.WriteLine(item);
-            }
-            if (assembly.GetManifestResourceNames().Contains<string>(fileName))
+			Assembly assembly = Assembly.GetEntryAssembly();
+			// assembly could be null when running the test suite
+            if (assembly != null && assembly.GetManifestResourceNames().Contains<string>(fileName))
             {
                 stream = assembly.GetManifestResourceStream(fileName);
 
