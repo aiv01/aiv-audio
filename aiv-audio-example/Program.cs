@@ -34,16 +34,16 @@ namespace Aiv.Audio.Example
 
             source.Play(clip);
 
-			AudioCapture microphone = new AudioCapture(22100, 1, 5);
+			AudioCapture microphone = new AudioCapture(22050, 1, 5f);
 			AudioBuffer micBuffer = new AudioBuffer();
 			microphone.Start();
 
 			while (true)
 			{
 				Console.ReadLine();
-				source.Play(clip);
+				//source.Play(clip);
 				Console.ReadLine();
-				microphone.Read(micBuffer);
+				Console.WriteLine(microphone.Read(micBuffer));
 				source.Play(micBuffer);
 			}
         }
