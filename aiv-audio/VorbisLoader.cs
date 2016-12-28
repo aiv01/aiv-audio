@@ -18,9 +18,11 @@ namespace Aiv.Audio
             channels = reader.Channels;
             frequency = reader.SampleRate;
             samples = (int)reader.TotalSamples;
+			// vorbis only support 32bit floats
+			bitsPerSample = 32;
         }
 
-        public override float[] ReadSamples(int amount)
+        public override float[] ReadSamples32(int amount)
         {
             float[] buffer = new float[amount];
             // ReadSamples could return less data than required for various reasons

@@ -6,33 +6,35 @@ using System.Threading.Tasks;
 
 namespace Aiv.Audio.Example
 {
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            foreach(string device in AudioDevice.Devices)
-            {
-                Console.WriteLine(device);
-            }
+	class Program
+	{
+		static void Main(string[] args)
+		{
+			foreach (string device in AudioDevice.Devices)
+			{
+				Console.WriteLine(device);
+			}
 
 			foreach (string device in AudioDevice.CaptureDevices)
 			{
 				Console.WriteLine(device);
 			}
 
-           
+
 			Console.WriteLine(AudioDevice.CurrentDevice.Name);
 
-            AudioClip clip = new AudioClip("Assets/jumping.ogg");
+			AudioClip clip = new AudioClip("Assets/jumping.ogg");
 
-            Console.WriteLine(clip.Channels);
-            Console.WriteLine(clip.Frequency);
-            Console.WriteLine(clip.Samples);
-            Console.WriteLine(clip.Duration);
+			AudioClip laser = new AudioClip("Assets/laser.wav");
 
-            AudioSource source = new AudioSource();
+			Console.WriteLine(clip.Channels);
+			Console.WriteLine(clip.Frequency);
+			Console.WriteLine(clip.Samples);
+			Console.WriteLine(clip.Duration);
 
-            source.Play(clip);
+			AudioSource source = new AudioSource();
+
+			source.Play(clip);
 
 			AudioCapture microphone = new AudioCapture(22050, 1, 5f);
 			AudioBuffer micBuffer = new AudioBuffer();
@@ -41,11 +43,16 @@ namespace Aiv.Audio.Example
 			while (true)
 			{
 				Console.ReadLine();
-				//source.Play(clip);
+				source.Play(clip);
 				Console.ReadLine();
-				Console.WriteLine(microphone.Read(micBuffer));
+				source.Play(laser);
+				Console.ReadLine();
+
+				microphone.Read(micBuffer);
 				source.Play(micBuffer);
+
 			}
-        }
-    }
+		}
+
+	}
 }
