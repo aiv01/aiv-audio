@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "aiv-audio", "aiv-audio\aiv-audio.csproj", "{9E4CBC6D-72F2-43CB-8344-5ECE534ED26F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "aiv-audio-example", "aiv-audio-example\aiv-audio-example.csproj", "{A06EDFBC-3459-453C-A416-2672872D053D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "aiv-audio-tests", "aiv-audio-tests\aiv-audio-tests.csproj", "{40ECDBFA-D203-4F91-9771-D0B004E7201F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9E4CBC6D-72F2-43CB-8344-5ECE534ED26F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E4CBC6D-72F2-43CB-8344-5ECE534ED26F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E4CBC6D-72F2-43CB-8344-5ECE534ED26F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E4CBC6D-72F2-43CB-8344-5ECE534ED26F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A06EDFBC-3459-453C-A416-2672872D053D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A06EDFBC-3459-453C-A416-2672872D053D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A06EDFBC-3459-453C-A416-2672872D053D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A06EDFBC-3459-453C-A416-2672872D053D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40ECDBFA-D203-4F91-9771-D0B004E7201F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40ECDBFA-D203-4F91-9771-D0B004E7201F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40ECDBFA-D203-4F91-9771-D0B004E7201F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40ECDBFA-D203-4F91-9771-D0B004E7201F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
