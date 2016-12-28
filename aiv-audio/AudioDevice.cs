@@ -17,7 +17,15 @@ namespace Aiv.Audio
 		{
 			get
 			{
-				return Alc.GetString(IntPtr.Zero, AlcGetStringList.AllDevicesSpecifier).ToArray<string>();
+				return Alc.GetString(IntPtr.Zero, AlcGetStringList.DeviceSpecifier).ToArray<string>();
+			}
+		}
+
+		public static string[] CaptureDevices
+		{
+			get
+			{
+				return Alc.GetString(IntPtr.Zero, AlcGetStringList.CaptureDeviceSpecifier).ToArray<string>();
 			}
 		}
 

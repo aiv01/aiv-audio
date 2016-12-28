@@ -75,7 +75,7 @@ namespace Aiv.Audio
                 return;
 
             buffer = new AudioBuffer();
-            buffer.Load(loader.ReadSamples(loader.Samples), loader.Channels, loader.Frequency);
+			buffer.Load(loader.ReadSamples(loader.Samples), loader.Frequency, loader.Channels);
         }
     }
 }

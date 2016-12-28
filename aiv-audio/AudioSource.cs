@@ -29,12 +29,16 @@ namespace Aiv.Audio
 
         public void Play(AudioClip clip, bool loop = false)
         {
-            this.Stop();
-            AudioBuffer buffer = clip.Buffer;
-            AL.Source(sourceId, ALSourcei.Buffer, buffer.Id);
-            AL.Source(sourceId, ALSourceb.Looping, loop);
-            this.Resume();
+			this.Play(clip.Buffer, loop);
         }
+
+		public void Play(AudioBuffer buffer, bool loop = false)
+		{
+			this.Stop();
+			AL.Source(sourceId, ALSourcei.Buffer, buffer.Id);
+			AL.Source(sourceId, ALSourceb.Looping, loop);
+			this.Resume();
+		}
 
         public void Resume()
         {

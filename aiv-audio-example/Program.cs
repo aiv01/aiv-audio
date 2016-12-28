@@ -15,6 +15,11 @@ namespace Aiv.Audio.Example
                 Console.WriteLine(device);
             }
 
+			foreach (string device in AudioDevice.CaptureDevices)
+			{
+				Console.WriteLine(device);
+			}
+
            
 			Console.WriteLine(AudioDevice.CurrentDevice.Name);
 
@@ -29,10 +34,17 @@ namespace Aiv.Audio.Example
 
             source.Play(clip);
 
+			AudioCapture microphone = new AudioCapture(22100, 1, 5);
+			AudioBuffer micBuffer = new AudioBuffer();
+			microphone.Start();
+
 			while (true)
 			{
 				Console.ReadLine();
 				source.Play(clip);
+				Console.ReadLine();
+				microphone.Read(micBuffer);
+				source.Play(micBuffer);
 			}
         }
     }
