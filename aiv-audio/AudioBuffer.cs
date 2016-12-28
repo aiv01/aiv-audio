@@ -25,34 +25,37 @@ namespace Aiv.Audio
 			bufferId = AL.GenBuffer();
 		}
 
-		public void Load(float[] data, int frequency, int channels)
+		public int Load(float[] data, int frequency, int channels)
 		{
-			Load(data, data.Length, frequency, channels);
+			return Load(data, data.Length, frequency, channels);
 		}
 
-		public void Load(float[] data, int length, int frequency, int channels)
+		public int Load(float[] data, int length, int frequency, int channels)
 		{
 			AL.BufferData(this.bufferId, channels > 1 ? ALFormat.StereoFloat32Ext : ALFormat.MonoFloat32Ext, data, length * sizeof(float), frequency);
+			return length;
 		}
 
-		public void Load(short[] data, int frequency, int channels)
+		public int Load(short[] data, int frequency, int channels)
 		{
-			Load(data, data.Length, frequency, channels);
+			return Load(data, data.Length, frequency, channels);
 		}
 
-		public void Load(short[] data, int length, int frequency, int channels)
+		public int Load(short[] data, int length, int frequency, int channels)
 		{
 			AL.BufferData(this.bufferId, channels > 1 ? ALFormat.Stereo16 : ALFormat.Mono16, data, length * sizeof(short), frequency);
+			return length;
 		}
 
-		public void Load(byte[] data, int frequency, int channels)
+		public int Load(byte[] data, int frequency, int channels)
 		{
-			Load(data, data.Length, frequency, channels);
+			return Load(data, data.Length, frequency, channels);
 		}
 
-		public void Load(byte[] data, int length, int frequency, int channels)
+		public int Load(byte[] data, int length, int frequency, int channels)
 		{
 			AL.BufferData(this.bufferId, channels > 1 ? ALFormat.Stereo8 : ALFormat.Mono8, data, length, frequency);
+			return length;
 		}
 
 		public void Dispose()

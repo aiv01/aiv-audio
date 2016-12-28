@@ -79,18 +79,29 @@ namespace Aiv.Audio
 				return;
 
 			buffer = new AudioBuffer();
+			LoadToBuffer(buffer, loader.Samples);
+		}
+
+		public void Rewind()
+		{
+			loader.Rewind();
+		}
+
+		public int LoadToBuffer(AudioBuffer buffer, int amount)
+		{
 			if (loader.BitsPerSample == 32)
 			{
-				buffer.Load(loader.ReadSamples32(loader.Samples), loader.Frequency, loader.Channels);
+				return buffer.Load(loader.ReadSamples32(amount), loader.Frequency, loader.Channels);
 			}
 			else if (loader.BitsPerSample == 16)
 			{
-				buffer.Load(loader.ReadSamples16(loader.Samples), loader.Frequency, loader.Channels);
+				return buffer.Load(loader.ReadSamples16(amount), loader.Frequency, loader.Channels);
 			}
 			else if (loader.BitsPerSample == 8)
 			{
-				buffer.Load(loader.ReadSamples8(loader.Samples), loader.Frequency, loader.Channels);
+				return buffer.Load(loader.ReadSamples8(amount), loader.Frequency, loader.Channels);
 			}
+			return -1;
 		}
 	}
 }

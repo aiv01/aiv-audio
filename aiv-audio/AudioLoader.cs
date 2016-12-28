@@ -46,8 +46,10 @@ namespace Aiv.Audio
 		}
 
 		protected short bitsPerSample;
-		public short BitsPerSample {
-			get {
+		public short BitsPerSample
+		{
+			get
+			{
 				return bitsPerSample;
 			}
 		}
@@ -65,6 +67,10 @@ namespace Aiv.Audio
 		public virtual byte[] ReadSamples8(int amount)
 		{
 			return null;
+		}
+
+		public virtual void Rewind()
+		{ 
 		}
 
 		protected uint ParseBigEndian32(byte[] buffer, int offset)

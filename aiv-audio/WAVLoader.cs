@@ -83,8 +83,14 @@ namespace Aiv.Audio
 			byte[] buffer = new byte[amount * sizeof(ushort)];
 			int count = this.stream.Read(buffer, 0, amount);
 			byte[] newBuffer = new byte[count];
-			buffer.CopyTo(newBuffer, 0);
+			Array.Copy(buffer, newBuffer, count);
 			return newBuffer;
+		}
+
+		public override void Rewind()
+		{
+			// move to byte 44
+			this.stream.Seek(44, System.IO.SeekOrigin.Begin);
 		}
 	}
 }

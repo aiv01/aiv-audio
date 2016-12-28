@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OpenTK.Audio.OpenAL;
+using OpenTK;
 
 namespace Aiv.Audio
 {
@@ -34,7 +35,8 @@ namespace Aiv.Audio
 		{
 			get
 			{
-				if (currentDevice == null) {
+				if (currentDevice == null)
+				{
 					UseDefault();
 				}
 				return currentDevice;
@@ -54,6 +56,20 @@ namespace Aiv.Audio
 			}
 		}
 
+		public Vector3 Position
+		{
+			get
+			{
+				float x, y, z;
+				AL.GetListener(ALListener3f.Position, out x, out y, out z);
+				return new Vector3(x, y, z);
+			}
+			set
+			{
+				AL.Listener(ALListener3f.Position, ref value);
+			}
+		}
+
 		public AudioDevice(string device = null)
 		{
 			if (device == null)
@@ -63,7 +79,6 @@ namespace Aiv.Audio
 
 			deviceId = Alc.OpenDevice(device);
 			contextHandle = Alc.CreateContext(deviceId, new int[] { });
-
 			this.Use();
 		}
 
