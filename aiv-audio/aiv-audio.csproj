@@ -9,7 +9,6 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Aiv.Audio</RootNamespace>
     <AssemblyName>aiv-audio</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -68,6 +67,8 @@
     <Compile Include="VorbisLoader.cs" />
     <Compile Include="AudioCapture.cs" />
     <Compile Include="WAVLoader.cs" />
+    <Compile Include="AudioSequence.cs" />
+    <Compile Include="AudioUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="OpenTK.dll.config">

@@ -73,33 +73,7 @@ namespace Aiv.Audio
 		{ 
 		}
 
-		protected uint ParseBigEndian32(byte[] buffer, int offset)
-		{
-			byte[] formatBuffer = new byte[4];
-			formatBuffer[0] = buffer[offset + 3];
-			formatBuffer[1] = buffer[offset + 2];
-			formatBuffer[2] = buffer[offset + 1];
-			formatBuffer[3] = buffer[offset];
-			return BitConverter.ToUInt32(formatBuffer, 0);
-		}
 
-		protected ushort ParseBigEndian16(byte[] buffer, int offset)
-		{
-			byte[] formatBuffer = new byte[2];
-			formatBuffer[0] = buffer[offset + 1];
-			formatBuffer[1] = buffer[offset];
-			return BitConverter.ToUInt16(formatBuffer, 0);
-		}
-
-		protected uint ParseLittleEndian32(byte[] buffer, int offset)
-		{
-			return BitConverter.ToUInt32(buffer, offset);
-		}
-
-		protected ushort ParseLittleEndian16(byte[] buffer, int offset)
-		{
-			return BitConverter.ToUInt16(buffer, offset);
-		}
 
 		public virtual void Open(string fileName)
 		{

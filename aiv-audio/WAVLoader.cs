@@ -17,38 +17,38 @@ namespace Aiv.Audio
 			// specs taken from http://soundfile.sapp.org/doc/WaveFormat/
 			byte[] buffer = new byte[44];
 			this.stream.Read(buffer, 0, 44);
-			uint chunkId = ParseBigEndian32(buffer, 0);
+			uint chunkId = AudioUtils.ParseBigEndian32(buffer, 0);
 			if (chunkId != 0x52494646)
 			{
 				throw new WAVParserException("Invalid ChunkID: " + chunkId.ToString("X"));
 			}
-			uint wave = ParseBigEndian32(buffer, 8);
+			uint wave = AudioUtils.ParseBigEndian32(buffer, 8);
 			if (wave != 0x57415645)
 			{
 				throw new WAVParserException("Invalid Wave Format: " + wave.ToString("X"));
 			}
-			uint subChunkId = ParseBigEndian32(buffer, 12);
+			uint subChunkId = AudioUtils.ParseBigEndian32(buffer, 12);
 			if (subChunkId != 0x666d7420)
 			{
 				throw new WAVParserException("Invalid SubChunkID: " + subChunkId.ToString("X"));
 			}
 
-			ushort audioFormat = ParseLittleEndian16(buffer, 20);
+			ushort audioFormat = AudioUtils.ParseLittleEndian16(buffer, 20);
 			if (audioFormat != 1)
 			{
 				throw new WAVParserException("Unsupported AudioFormat: " + audioFormat.ToString("X"));
 			}
 
-			channels = ParseLittleEndian16(buffer, 22);
-			frequency = (int)ParseLittleEndian32(buffer, 24);
-			bitsPerSample = (short)ParseLittleEndian16(buffer, 34);
+			channels = AudioUtils.ParseLittleEndian16(buffer, 22);
+			frequency = (int)AudioUtils.ParseLittleEndian32(buffer, 24);
+			bitsPerSample = (short)AudioUtils.ParseLittleEndian16(buffer, 34);
 
-			uint subChunk2Id = ParseBigEndian32(buffer, 36);
+			uint subChunk2Id = AudioUtils.ParseBigEndian32(buffer, 36);
 			if (subChunk2Id != 0x64617461)
 			{
 				throw new WAVParserException("Invalid SubChunk2ID: " + subChunk2Id.ToString("X"));
 			}
-			samples = (int)(ParseLittleEndian32(buffer, 40) / (bitsPerSample / 8));
+			samples = (int)(AudioUtils.ParseLittleEndian32(buffer, 40) / (bitsPerSample / 8));
 
 		}
 
