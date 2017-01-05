@@ -50,10 +50,10 @@ namespace Aiv.Audio.Example
 
             Window window = new Window(1024, 576, "Aiv.Audio Example");
 
-           /* background.Position = new OpenTK.Vector3(window.Width / 2, window.Height / 2, 0);
+            background.Position = new OpenTK.Vector3(window.Width / 2, window.Height / 2, 0);
             background.ReferenceDistance = 50;
             background.MaxDistance = 100;
-            background.RolloffFactor = 1f;*/
+            background.RolloffFactor = 1f;
 
             Sprite sprite = new Sprite(100, 100);
 
@@ -85,8 +85,8 @@ namespace Aiv.Audio.Example
                 if (window.GetKey(KeyCode.Down))
                     sprite.position.Y += 100 * window.deltaTime;
 
-                //playerEar.Position = new OpenTK.Vector3(sprite.position.X, sprite.position.Y, 0);
-                //source.Position = playerEar.Position;
+                playerEar.Position = new OpenTK.Vector3(sprite.position.X, sprite.position.Y, 0);
+                source.Position = playerEar.Position;
 
                 sprite.DrawSolidColor(1f, 0, 0);
 

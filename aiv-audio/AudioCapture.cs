@@ -71,5 +71,22 @@ namespace Aiv.Audio
 			audioBuffer.Load(buffer, samples, frequency, channels);
 			return samples;
 		}
-	}
+
+        public short[] Read()
+        {
+            int samples = AvailableSamples;
+            Alc.CaptureSamples(deviceId, bufferPtr, samples);
+            short[] tmpBuffer = new short[samples];
+            Array.Copy(buffer, tmpBuffer, samples);
+            return tmpBuffer;
+        }
+
+        public int Read(short[] data)
+        {
+            int samples = AvailableSamples;
+            Alc.CaptureSamples(deviceId, bufferPtr, samples);
+            Array.Copy(buffer, data, samples);
+            return samples;
+        }
+    }
 }
