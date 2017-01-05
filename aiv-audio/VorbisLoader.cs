@@ -27,7 +27,7 @@ namespace Aiv.Audio
 			float[] buffer = new float[amount];
 			// ReadSamples could return less data than required for various reasons
 			int count = this.reader.ReadSamples(buffer, 0, buffer.Length);
-			if (count == buffer.Length)
+            if (count == buffer.Length)
 				return buffer;
 			// prepare a new buffer
 			float[] newBuffer = new float[count];

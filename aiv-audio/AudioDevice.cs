@@ -14,11 +14,21 @@ namespace Aiv.Audio
 		private IntPtr deviceId;
 		private OpenTK.ContextHandle contextHandle;
 
+        private static bool hasFloat32;
+
+        public static bool HasFloat32
+        {
+            get
+            {
+                return hasFloat32;
+            }
+        }
+
 		public static string[] Devices
 		{
 			get
 			{
-				return Alc.GetString(IntPtr.Zero, AlcGetStringList.DeviceSpecifier).ToArray<string>();
+                return Alc.GetString(IntPtr.Zero, AlcGetStringList.DeviceSpecifier).ToArray<string>();
 			}
 		}
 
@@ -56,6 +66,11 @@ namespace Aiv.Audio
 			}
 		}
 
+        public static string GetError()
+        {
+            return AL.GetErrorString(AL.GetError());
+        }
+
 		public Vector3 Position
 		{
 			get
@@ -70,9 +85,16 @@ namespace Aiv.Audio
 			}
 		}
 
-		public AudioDevice(string device = null)
+        static AudioDevice()
+        {
+            if (AL.IsExtensionPresent("AL_EXT_float32"))
+                hasFloat32 = true;
+        }
+
+        public AudioDevice(string device = null)
 		{
-			if (device == null)
+           
+            if (device == null)
 			{
 				device = Alc.GetString(IntPtr.Zero, AlcGetString.DefaultDeviceSpecifier);
 			}
