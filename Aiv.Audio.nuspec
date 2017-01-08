@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Aiv.Audio</id>
+    <version>0.1</version>
+    <authors>Aiv, 20Tab</authors>
+    <owners>Aiv, 20Tab</owners>
+    <licenseUrl>https://github.com/aiv01/aiv-audio/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/aiv01/aiv-audio</projectUrl>
+    <iconUrl>https://avatars2.githubusercontent.com/u/15378741</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>OpenAL based wrapper for teaching gaming audio</description>
+    <releaseNotes>first public release</releaseNotes>
+    <copyright>Copyright 2017</copyright>
+    <tags>aiv gaming 2d drawing opengl</tags>
+    <dependencies>
+      <dependency id="OpenTK" version="2.0.0" />
+      <dependency id="NVorbis" version="0.8.5" />
+      <dependency id="Concentus" version="1.1.0.0" />
+      <dependency id="Concentus.Oggfile" version="1.0.0.0" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="aiv-audio/bin/Release/aiv-audio.dll" target="lib/net40" />
+  </files>
+</package>
