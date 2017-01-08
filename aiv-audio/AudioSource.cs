@@ -79,6 +79,42 @@ namespace Aiv.Audio
 
         private int numberOfStreamingBuffers;
 
+
+        private float minVolume;
+        private float maxVolume;
+
+        public float Volume
+        {
+            get
+            {
+                float volume = 0;
+                AL.GetSource(this.sourceId, ALSourcef.Gain, out volume);
+                return AudioUtils.Clamp(volume, this.minVolume, this.maxVolume);
+            }
+            set
+            {
+                AL.Source(this.sourceId, ALSourcef.Gain, AudioUtils.Clamp(value, this.minVolume, this.maxVolume));
+            }
+        }
+
+        public float Pitch
+        {
+            get
+            {
+                float speed = 0;
+                AL.GetSource(this.sourceId, ALSourcef.Pitch, out speed);
+                return speed;
+            }
+            set
+            {
+                // avoid illegal values
+                if (value < 0)
+                    value = 0;
+                AL.Source(this.sourceId, ALSourcef.Pitch, value);
+            }
+        }
+
+
         public AudioSource(int numberOfStreamingBuffers = 3)
         {
             if (AudioDevice.CurrentDevice == null)
@@ -87,6 +123,8 @@ namespace Aiv.Audio
             }
             this.numberOfStreamingBuffers = numberOfStreamingBuffers;
             sourceId = AL.GenSource();
+            AL.GetSource(this.sourceId, ALSourcef.MinGain, out this.minVolume);
+            AL.GetSource(this.sourceId, ALSourcef.MaxGain, out this.maxVolume);
             // set the audiosource in a good default state
             this.Stop();
         }
@@ -98,6 +136,7 @@ namespace Aiv.Audio
                 return AL.GetSourceState(this.sourceId) == ALSourceState.Playing;
             }
         }
+
 
         public void Play(AudioClip clip, bool loop = false)
         {
