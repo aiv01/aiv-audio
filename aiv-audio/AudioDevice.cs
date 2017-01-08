@@ -104,7 +104,21 @@ namespace Aiv.Audio
 			this.Use();
 		}
 
-		public void Use()
+        public float Volume
+        {
+            get
+            {
+                float volume = 0;
+                AL.GetListener(ALListenerf.Gain, out volume);
+                return volume;
+            }
+            set
+            {
+                AL.Listener(ALListenerf.Gain, value);
+            }
+        }
+
+        public void Use()
 		{
 			Alc.MakeContextCurrent(contextHandle);
 			currentDevice = this;
