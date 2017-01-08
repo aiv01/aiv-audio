@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "aiv-audio-example", "aiv-au
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "aiv-audio-tests", "aiv-audio-tests\aiv-audio-tests.csproj", "{40ECDBFA-D203-4F91-9771-D0B004E7201F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "aiv_audio_example_midi", "aiv_audio_example_midi\aiv_audio_example_midi.csproj", "{AB78D818-2B66-4BC2-BFED-A9F3868AD60A}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "aiv-audio-example-streamer", "aiv-audio-example-streamer\aiv-audio-example-streamer.csproj", "{217F8804-1F6E-43B7-89B7-C28B42037AE3}"
 EndProject
 Global
@@ -31,10 +29,6 @@ Global
 		{40ECDBFA-D203-4F91-9771-D0B004E7201F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{40ECDBFA-D203-4F91-9771-D0B004E7201F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{40ECDBFA-D203-4F91-9771-D0B004E7201F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AB78D818-2B66-4BC2-BFED-A9F3868AD60A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AB78D818-2B66-4BC2-BFED-A9F3868AD60A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AB78D818-2B66-4BC2-BFED-A9F3868AD60A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AB78D818-2B66-4BC2-BFED-A9F3868AD60A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{217F8804-1F6E-43B7-89B7-C28B42037AE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{217F8804-1F6E-43B7-89B7-C28B42037AE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{217F8804-1F6E-43B7-89B7-C28B42037AE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
