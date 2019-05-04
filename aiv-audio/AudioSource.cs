@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using OpenTK.Audio.OpenAL;
 using OpenTK;
 
@@ -277,7 +275,7 @@ namespace Aiv.Audio
                 int i;
                 for (i = 0; i < streamingBuffers.Length; i++)
                 {
-                    // stream 1.5 seconds
+                    // stream max 1.5 seconds
                     int amount = clip.LoadToBuffer(streamingBuffers[i], (clip.Channels * clip.Frequency) / 2);
                     if (amount == 0)
                     {
@@ -292,7 +290,8 @@ namespace Aiv.Audio
                 AL.SourcePlay(this.sourceId);
             }
             streamAccumulator += deltaTime;
-            if (streamAccumulator < 1f / 30)
+            // check audio every 100ms
+            if (streamAccumulator < 1f / 10)
                 return;
 
             // how many buffers are already processed ?

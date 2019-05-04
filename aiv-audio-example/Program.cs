@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Aiv.Fast2D;
 
 namespace Aiv.Audio.Example
@@ -32,10 +29,19 @@ namespace Aiv.Audio.Example
 
             AudioClip backgroundMusic = new AudioClip("Assets/test_wikipedia_mono.ogg");
 
+            Console.WriteLine("--- Assets/jumping.ogg ---");
             Console.WriteLine(clip.Channels);
             Console.WriteLine(clip.Frequency);
             Console.WriteLine(clip.Samples);
             Console.WriteLine(clip.Duration);
+            Console.WriteLine(clip.BitsPerSample);
+
+            Console.WriteLine("--- Assets/laser.wav ---");
+            Console.WriteLine(laser.Channels);
+            Console.WriteLine(laser.Frequency);
+            Console.WriteLine(laser.Samples);
+            Console.WriteLine(laser.Duration);
+            Console.WriteLine(laser.BitsPerSample);
 
             AudioSource source = new AudioSource();
 

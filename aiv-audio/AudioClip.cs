@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace Aiv.Audio
 {
     public class AudioClip
@@ -46,11 +41,19 @@ namespace Aiv.Audio
             }
         }
 
+        public int BitsPerSample
+        {
+            get
+            {
+                return loader.BitsPerSample;
+            }
+        }
+
         public float Duration
         {
             get
             {
-                return (float)loader.Samples / (loader.Frequency * loader.Channels);
+                return (float)loader.Samples / loader.Frequency;
             }
         }
 

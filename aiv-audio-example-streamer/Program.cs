@@ -13,38 +13,75 @@ namespace Aiv.Audio.Example.Streamer
     {
         static void Main(string[] args)
         {
-            AudioClip clip = new AudioClip("Assets/test_wikipedia.ogg");
+            AudioClip clip001 = new AudioClip("Assets/test_wikipedia.ogg");
+            AudioClip clip002 = new AudioClip("Assets/Tremolo_picking.ogg");
 
-            AudioSource streamer = new AudioSource(5);
+            Console.WriteLine(clip001.Duration + " " + clip001.Channels + " " + clip001.Samples);
+            Console.WriteLine(clip002.Duration + " " + clip002.Channels + " " + clip002.Samples);
 
-            float requestedTime = 1.0f;
+            AudioSource streamer001 = new AudioSource(5);
 
-            int amount = (int)(clip.Frequency * requestedTime * clip.Channels);
-            float[] data = null;
+            AudioSource streamer002 = new AudioSource(5);
+
+            streamer002.Volume = 0.5f;
+
+            float requestedTime = 1.1f;
+
+            int amount001 = (int)(clip001.Frequency * requestedTime * clip001.Channels);
+            float[] data001 = null;
+
+            int amount002 = (int)(clip002.Frequency * requestedTime * clip002.Channels);
+            float[] data002 = null;
+
             while (true)
             {
-                if (data == null)
+                if (data001 == null)
                 {
-                    data = clip.ReadSamples32(amount);
+                    data001 = clip001.ReadSamples32(amount001);
                 }
-                if (data.Length == 0)
+                if (data001.Length == 0)
                 {
-                    Console.WriteLine("END OF THE STREAM");
-                    clip.Rewind();
-                    data = null;
-                    continue;
-                }
-
-                if (!streamer.Enqueue(data, clip.Frequency, clip.Channels))
-                {
-                    Console.WriteLine("PLEASE SLOW DOWN !!!");
-                }
-                else
-                {
-                    data = null;
+                    Console.WriteLine("END OF THE STREAM 001");
+                    clip001.Rewind();
+                    data001 = null;
                 }
 
-                Thread.Sleep(900);
+                if (data002 == null)
+                {
+                    data002 = clip002.ReadSamples32(amount002);
+                }
+                if (data002.Length == 0)
+                {
+                    Console.WriteLine("END OF THE STREAM 002");
+                    clip002.Rewind();
+                    data002 = null;
+                }
+
+                if (data001 != null)
+                {
+                    if (!streamer001.Enqueue(data001, clip001.Frequency, clip001.Channels))
+                    {
+                        Console.WriteLine("PLEASE SLOW DOWN STREAM 002!!!");
+                    }
+                    else
+                    {
+                        data001 = null;
+                    }
+                }
+
+                if (data002 != null)
+                {
+                    if (!streamer002.Enqueue(data002, clip002.Frequency, clip002.Channels))
+                    {
+                        Console.WriteLine("PLEASE SLOW DOWN STREAM 002!!!");
+                    }
+                    else
+                    {
+                        data002 = null;
+                    }
+                }
+
+                Thread.Sleep(1000);
             }
         }
     }

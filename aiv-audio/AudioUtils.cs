@@ -31,25 +31,6 @@ namespace Aiv.Audio
 			return BitConverter.ToUInt16(buffer, offset);
 		}
 
-		public static int ParseVLQ(byte[] buffer, int offset, ref int index)
-		{
-			int value = buffer[offset];
-			index++;
-			if ((value & 0x80) == 0)
-			{
-				return value;
-			}
-			value &= 0x7f;
-			byte c;
-			do
-			{
-				c = buffer[++offset];
-				index++;
-				value = (value << 7) + (c & 0x7f);
-			} while ((c & 0x80) != 0);
-			return value;
-		}
-
         public static float Clamp(float value, float min, float max)
         {
             if (value < min)
