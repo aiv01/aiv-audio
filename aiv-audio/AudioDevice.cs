@@ -25,7 +25,7 @@ namespace Aiv.Audio
 		{
 			get
 			{
-                return Alc.GetString(IntPtr.Zero, AlcGetStringList.DeviceSpecifier).ToArray<string>();
+                return Alc.GetString(IntPtr.Zero, AlcGetStringList.AllDevicesSpecifier).ToArray<string>();
 			}
 		}
 
@@ -59,7 +59,7 @@ namespace Aiv.Audio
 		{
 			get
 			{
-				return Alc.GetString(this.deviceId, AlcGetString.DeviceSpecifier);
+				return Alc.GetString(this.deviceId, AlcGetString.AllDevicesSpecifier);
 			}
 		}
 
@@ -97,6 +97,10 @@ namespace Aiv.Audio
 			}
 
 			deviceId = Alc.OpenDevice(device);
+            if (deviceId == IntPtr.Zero)
+            {
+                throw new Exception("unable to open the specified audio device");
+            }
 			contextHandle = Alc.CreateContext(deviceId, new int[] { });
 			this.Use();
 		}

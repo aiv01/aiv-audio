@@ -13,6 +13,20 @@ namespace Aiv.Audio.Example.Streamer
     {
         static void Main(string[] args)
         {
+            AudioDevice currentDevice = new AudioDevice();
+
+            foreach(string DeviceName in AudioDevice.Devices)
+            {
+                Console.WriteLine(DeviceName);
+            }
+
+            foreach (string DeviceName in AudioDevice.CaptureDevices)
+            {
+                Console.WriteLine(DeviceName);
+            }
+
+            Console.WriteLine(AudioDevice.CurrentDevice.Name);
+
             AudioClip clip001 = new AudioClip("Assets/test_wikipedia.ogg");
             AudioClip clip002 = new AudioClip("Assets/Tremolo_picking.ogg");
 
