@@ -49,6 +49,9 @@ namespace Aiv.Audio.Example.Streamer
 
             while (true)
             {
+                Console.WriteLine(streamer001.SampleOffset + " " + streamer002.SampleOffset);
+                Console.WriteLine(streamer001.ByteOffset + " " + streamer002.ByteOffset);
+
                 if (data001 == null)
                 {
                     data001 = clip001.ReadSamples32(amount001);

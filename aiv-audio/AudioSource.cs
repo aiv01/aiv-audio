@@ -32,6 +32,33 @@ namespace Aiv.Audio
             }
         }
 
+        public Vector3 Velocity
+        {
+            get
+            {
+                float x, y, z;
+                AL.GetSource(this.sourceId, ALSource3f.Velocity, out x, out y, out z);
+                return new Vector3(x, y, z);
+            }
+            set
+            {
+                AL.Source(this.sourceId, ALSource3f.Velocity, ref value);
+            }
+        }
+
+        public Vector3 Direction
+        {
+            get
+            {
+                float x, y, z;
+                AL.GetSource(this.sourceId, ALSource3f.Direction, out x, out y, out z);
+                return new Vector3(x, y, z);
+            }
+            set
+            {
+                AL.Source(this.sourceId, ALSource3f.Direction, ref value);
+            }
+        }
 
         public float ReferenceDistance
         {
@@ -109,6 +136,26 @@ namespace Aiv.Audio
                 if (value < 0)
                     value = 0;
                 AL.Source(this.sourceId, ALSourcef.Pitch, value);
+            }
+        }
+
+        public int ByteOffset
+        {
+            get
+            {
+                int offset = 0;
+                AL.GetSource(this.sourceId, ALGetSourcei.ByteOffset, out offset);
+                return offset;
+            }
+        }
+
+        public int SampleOffset
+        {
+            get
+            {
+                int offset = 0;
+                AL.GetSource(this.sourceId, ALGetSourcei.SampleOffset, out offset);
+                return offset;
             }
         }
 
